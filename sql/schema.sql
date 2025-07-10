@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS bbradio;
+USE bbradio;
+
+CREATE TABLE playlists (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) UNIQUE NOT NULL,
+  path VARCHAR(1024) NOT NULL
+);
+
+CREATE TABLE schedules (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  pl_id INT,
+  start DATETIME,
+  end DATETIME,
+  FOREIGN KEY(pl_id) REFERENCES playlists(id)
+);
