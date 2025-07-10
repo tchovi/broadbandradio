@@ -24,6 +24,7 @@ Self-hosted open source radio station platform featuring:
 1. Clone repo & install:
 
 git clone https://github.com/tchovi/broadbandradio.git
+
 cd broadbandradio
 
 npm install
