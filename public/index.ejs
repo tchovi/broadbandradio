@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BroadBandRadio</title>
+</head>
+<body>
+  <h1>Welcome to BroadBandRadio</h1>
+  <h2>Available Playlists</h2>
+  <ul>
+    <% playlists.forEach(pl => { %>
+      <li><%= pl.name %> - <%= pl.path %></li>
+    <% }) %>
+  </ul>
+  <a href="/dj.html">DJ Panel</a>
+</body>
+</html>
