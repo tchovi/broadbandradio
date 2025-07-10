@@ -13,57 +13,32 @@ Self-hosted open source radio station platform featuring:
 - Auto-fallback to emergency content
 - Real-time DJ broadcasting via web socket
 - Proxy streaming via NGINX
+- AutoDJ playlist engine
+- DJ live broadcasting via browser
+- Scheduling engine
+- Icecast streaming relay
+- Web dashboard
 
 ## Requirements
-- Debian 10/11, root access
-- Node.js, MariaDB, Icecast2, NGINX
-- OPAM for Liquidsoap
+- Debian 10 or higher (tested on Debian 12)
+- Root privileges
 
 ## Installation
 
-1. Clone repo & install:
-
-git clone https://github.com/tchovi/broadbandradio.git
-
+## Installation
+```bash
+git clone https://github.com/yourname/broadbandradio.git
 cd broadbandradio
+chmod +x install.sh
+./install.sh
+```
 
-npm install
-mariadb < sql/schema.sql
+Then visit `http://localhost` to access the platform.
 
-2. Setup Liquidsoap service:
-
-sudo cp liquidsoap/main.liq /etc/liquidsoap/main.liq
-sudo tee /etc/systemd/system/bbradio.service > /dev/null << EOF
-[Unit]
-Description=BroadBandRadio Liquidsoap
-After=network.target
-
-[Service]
-User=www-data
-ExecStart=/usr/bin/liquidsoap /etc/liquidsoap/main.liq
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-EOF
-sudo systemctl daemon-reload
-sudo systemctl start bbradio
-sudo systemctl enable bbradio
-
-3.Start Node.js app:
-node server/index.js
-
-4. Setup NGINX:
-sudo cp nginx/broadbandradio.conf /etc/nginx/sites-available/
-sudo ln -s ../sites-available/broadbandradio.conf /etc/nginx/sites-enabled/
-sudo systemctl restart nginx
-
-
-## Usage
-- Add playlist media to `/var/bbradio/music/`
-- Schedule via web UI or `POST /api/schedule`
-- DJ via `/public/dj.html` with Web Audio support
-- Stream via `http://radio.example.com/stream/stream.mp3`
-
+## Streaming
+Listen to the stream at:
+```
+http://localhost/stream/stream.mp3
+```
 ## License
 MIT License
