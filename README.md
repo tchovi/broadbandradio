@@ -27,7 +27,7 @@ Self-hosted open source radio station platform featuring:
 
 ## Installation
 ```bash
-git clone https://github.com/yourname/broadbandradio.git
+git clone https://github.com/tchovi/broadbandradio.git
 cd broadbandradio
 chmod +x install.sh
 ./install.sh
